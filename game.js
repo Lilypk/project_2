@@ -1,7 +1,7 @@
 class Card {
     constructor(suits, cardValues) {
-        this.suits = suits;
-        this.cardValues = cardValues;
+        this.suits = suits
+        this.cardValues = cardValues
 
     }
 }
@@ -50,11 +50,18 @@ class Deck {
             return array;
         }
     
+    
 }
 
 let deckReady = new Deck
 console.log(deckReady)
 
+class Players {
+    constructor(name, playerDeck) {
+        this.name = name
+        this.playerDeck = playerDeck
+    }
+}
 
 
 
