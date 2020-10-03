@@ -2,6 +2,7 @@ class Card {
         constructor(suits, cardValues) {
             this.suits = suit;
             this.cardValues = value;
+            
         }
     }
 
