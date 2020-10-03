@@ -11,6 +11,7 @@ class Deck {
         this.deck = []
         this.makeDeck()
         this.shuffle(this.deck)
+        this.splitDeck(this.deck)
     }
     makeDeck() {
         let suits = ['hearts', 'spades', 'clubs', 'diamonds']
@@ -39,17 +40,23 @@ class Deck {
             while (0 !== currentIndex) {
         
         
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
+                randomIndex = Math.floor(Math.random() * currentIndex)
+                currentIndex -= 1
         
         
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
+                temporaryValue = array[currentIndex]
+                array[currentIndex] = array[randomIndex]
+                array[randomIndex] = temporaryValue
             }
-            return array;
+            return array
         }
-    
+    splitDeck(deck) {
+        let half = deck.length / 2
+        let firstHalf = deck.splice(0, half)
+        let secondHalf = deck.splice(-half)
+        
+        console.log(firstHalf,secondHalf)
+    }
     
 }
 
