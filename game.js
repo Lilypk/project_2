@@ -10,7 +10,7 @@ class Deck {
     constructor() {
         this.deck = []
         this.makeDeck()
-        
+        this.shuffle(this.deck)
     }
     makeDeck() {
         let suits = ['hearts', 'spades', 'clubs', 'diamonds']
