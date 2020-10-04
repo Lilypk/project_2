@@ -65,9 +65,9 @@ class Player {
         this.name = []
         this.deck = playerDeck
         this.roundsWon = 0
-        
     }
     getRemainingCards() {
+        //how many cards do they have left
     }
     playCard() {
         let cardInPlay = this.deck.pop()
@@ -75,9 +75,8 @@ class Player {
     }
     giveThreeCards() {
     }
-    receiveCardsForWinning(winnerCards) {
-        this.deck.unshift(...winnerCards)
-        this.roundsWon++
+    receiveCardsForWinning() {
+        //how the winning cards are given to the player
     }
 
 }
@@ -87,12 +86,10 @@ class Game {
         let deckHalves = d.dealDeck(d.deck)
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
-        let c = new Player()
-        let playerCard = c.playCard()
+        
     }
     conductTurn() {
         //get cards from players
-        
     }
     compareCards() {
         let p1Card = this.playerOne.cardInPlay
@@ -106,19 +103,17 @@ class Game {
         }
 
     }
-    giveWinnerCards(winnerName, winnerCards) {
-        this[winnerName].receiveCardsForWinning(winnerCards)
-        if(this.playerOne.deck.length == 0){
-
-        }
+    giveWinnerCards() {
+        //how the winning cards get to the winner
     }
     declareWar() {
-
+        //each player giveThreeCards
+        //fourth card compareCards
+        //if one is greater, giveWinnerCards
+        //if they are equal, giveThreeCards, fourth card compareCards
     }
-    gameEnd(winnerName) {
-        if (p1Card.value || p2Card.value === 52) {
-            console.log('End of game. ${winnerName} won!')
-        }
+    gameEnd() {
+        //one player has all 52 cards, they win
     }
 }
 
@@ -129,4 +124,6 @@ let deckReady = new Deck
 console.log(deckReady)
 let gameReady = new Game('playerOne', 'playerTwo')
 console.log(gameReady)
+let playerReady = new Player
+
 
