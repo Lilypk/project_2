@@ -82,3 +82,5 @@ let cardReady = new Card
 console.log(cardReady)
 let deckReady = new Deck
 console.log(deckReady)
+let gameReady = new Game('Lily', 'Computer') 
+console.log(gameReady)
