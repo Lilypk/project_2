@@ -2,9 +2,10 @@ class Card {
     constructor(suits, cardValues) {
         this.suits = suits
         this.cardValues = cardValues
-
     }
-
+    printCard() {
+        console.log(`${this.name} ${this.cardValues}`)
+    }
 
 }
 class Deck {
@@ -64,7 +65,7 @@ class Player {
     constructor(name, playerDeck) {
         this.name = []
         this.deck = playerDeck
-        this.roundsWon = 0
+        
     }
     getRemainingCards() {
         //how many cards do they have left
@@ -74,9 +75,11 @@ class Player {
         return cardInPlay
     }
     giveThreeCards() {
+        //three cards are drawn out of each players deck for war
     }
-    receiveCardsForWinning() {
-        //how the winning cards are given to the player
+    receiveCardsForWinning(winningCards) {
+        this.deck.unshift(...winningCards)
+        
     }
 
 }
@@ -86,10 +89,10 @@ class Game {
         let deckHalves = d.dealDeck(d.deck)
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
-        
+        this.conductTurn()
     }
     conductTurn() {
-        //get cards from players
+        let cardStack = [this.playerOne.deck, this.playerTwo.deck]
     }
     compareCards() {
         let p1Card = this.playerOne.cardInPlay
@@ -99,21 +102,28 @@ class Game {
         } else if (p1Card.value < p2Card.value) {
             this.giveWinnerCards('playerTwo', [p1Card,p2Card])
         } else {
-            //declareWar
+            this.declareWar()
         }
 
     }
-    giveWinnerCards() {
-        //how the winning cards get to the winner
+    giveWinnerCards(winnerName, winnerCards) {
+        this[winnerName].receiveCardsForWinning[winnerCards]
+        if(this.playerOne.deck.length == 52 || this.playerTwo.deck.length == 52) {
+            this.gameEnd()
+        }
     }
     declareWar() {
         //each player giveThreeCards
         //fourth card compareCards
         //if one is greater, giveWinnerCards
         //if they are equal, giveThreeCards, fourth card compareCards
+
     }
-    gameEnd() {
-        //one player has all 52 cards, they win
+    gameEnd(winnerName) {
+        console.log(`The winner of the game is ${this[winnerName].name}!`)
+    }
+    printWinnerName() {
+        
     }
 }
 
