@@ -104,12 +104,16 @@ class Game {
     declareWar() {
         let p1WarCards = this.playerOne.warCards
         let p2WarCards = this.playerTwo.warCards
-
-        
         //each player giveThreeCards
         //fourth card compareCards
-        //if one is greater, giveWinnerCards
-        //if they are equal, giveThreeCards, fourth card compareCards
+      
+         if (p1WarCards.value > p2WarCards.value) {
+            this.giveWinnerCards('playerOne', [p1WarCards,p2WarCards])
+        } else if (p1WarCards.value < p2WarCards.value) {
+            this.giveWinnerCards('playerTwo', [p1WarCards,p2WarCards])
+        } else {
+            this.declareWar()
+        }
 
     }
     gameEnd(winnerName) {
