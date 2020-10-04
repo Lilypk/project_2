@@ -2,9 +2,15 @@ class Card {
     constructor(suits, cardValues) {
         this.suits = suits
         this.cardValues = cardValues
-        
+        this.distributeCards()
         }
-    
+    distributeCards() {
+        let playerOne = []
+        let playerTwo = []
+        this.playerOne = deck.splice(0,26)
+        this.playerTwo = deck.splice(0,26)
+       
+    }
     
 }
 
@@ -13,7 +19,7 @@ class Deck {
         this.deck = []
         this.makeDeck()
         this.shuffleDeck(this.deck)
-        this.splitDeck(this.deck)
+       
         
     }
     makeDeck() {
@@ -53,27 +59,22 @@ class Deck {
             }
             return array
         }
-    splitDeck(deck) {
-        let half = deck.length / 2
-        let firstHalf = deck.splice(0, half)
-        let secondHalf = deck.splice(-half)
-       
-        console.log(firstHalf, secondHalf)
-    }
+   
   
 }
 
-let deckReady = new Deck
-console.log(deckReady)
-
 class Players {
-    constructor(name, playerDeck) {
-        this.name = name
+    constructor(playerDeck) {
+        this.name = []
         this.playerDeck = playerDeck
     }
     
-}
 
+}
+let deckReady = new Deck
+console.log(deckReady)
+let cardReady = new Card
+console.log(cardReady)
 
 
 
