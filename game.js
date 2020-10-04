@@ -75,8 +75,8 @@ class Player {
     }
     giveThreeCards() {
     }
-    receiveCardsForWinning(winningCards) {
-        this.deck.unshift(...winningCards)
+    receiveCardsForWinning(winnerCards) {
+        this.deck.unshift(...winnerCards)
         this.roundsWon++
     }
 
@@ -87,7 +87,8 @@ class Game {
         let deckHalves = d.dealDeck(d.deck)
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
-        this.playCard()
+        let c = new Player()
+        let playerCard = c.playCard()
     }
     conductTurn() {
         //get cards from players
@@ -101,12 +102,23 @@ class Game {
         } else if (p1Card.value < p2Card.value) {
             this.giveWinnerCards('playerTwo', [p1Card,p2Card])
         } else {
-            //declair war
+            //declareWar
         }
 
     }
     giveWinnerCards(winnerName, winnerCards) {
+        this[winnerName].receiveCardsForWinning(winnerCards)
+        if(this.playerOne.deck.length == 0){
 
+        }
+    }
+    declareWar() {
+
+    }
+    gameEnd(winnerName) {
+        if (p1Card.value || p2Card.value === 52) {
+            console.log('End of game. ${winnerName} won!')
+        }
     }
 }
 
@@ -117,3 +129,4 @@ let deckReady = new Deck
 console.log(deckReady)
 let gameReady = new Game('playerOne', 'playerTwo')
 console.log(gameReady)
+
