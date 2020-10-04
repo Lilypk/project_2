@@ -69,10 +69,15 @@ class Player {
     }
     getRemainingCards() {
     }
-   
+    playCard() {
+        let cardInPlay = this.deck.pop()
+        return cardInPlay
+    }
     giveThreeCards() {
     }
-    receiveCardsForWinning() {
+    receiveCardsForWinning(winningCards) {
+        this.deck.unshift(...winningCards)
+        this.roundsWon++
     }
 
 }
@@ -82,26 +87,25 @@ class Game {
         let deckHalves = d.dealDeck(d.deck)
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
-        this.conductTurn()
+        this.playCard()
     }
     conductTurn() {
-        let playerOnePlayedCard = this.playerOne.deck.shift()
-        let playerTwoPlayedCard = this.playerTwo.deck.shift()
+        //get cards from players
         
     }
     compareCards() {
-        let p1Card = this.playerOnePlayedCard
-        let p2Card = this.playerTwoPlayedCard
+        let p1Card = this.playerOne.cardInPlay
+        let p2Card = this.playerTwo.cardInPlay
         if (p1Card.value > p2Card.value) {
             this.giveWinnerCards('playerOne', [p1Card,p2Card])
         } else if (p1Card.value < p2Card.value) {
             this.giveWinnerCards('playerTwo', [p1Card,p2Card])
         } else {
-            
+            //declair war
         }
 
     }
-    giveWinnerCards() {
+    giveWinnerCards(winnerName, winnerCards) {
 
     }
 }
