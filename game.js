@@ -65,11 +65,11 @@ class Player {
         return cardInPlay
     }
     giveThreeCards() {
-        let warCards = this.deck.splice(this.deck.length - 3, 3)
-        return warCards
+        // let warCards = this.deck.splice(this.deck.length - 3, 3)
+        // return warCards
     }
     receiveCardsForWinning(winningCards) {
-        this.deck.unshift(...winningCards)
+        // this.deck.unshift(...winningCards)
     }
 }
 class Game {
@@ -85,21 +85,21 @@ class Game {
         //get playCard from players 
     }
     compareCards() {
-        let p1Card = this.playerOne.cardInPlay
-        let p2Card = this.playerTwo.cardInPlay
-        if (p1Card.value > p2Card.value) {
-            this.giveWinnerCards('playerOne', [p1Card,p2Card])
-        } else if (p1Card.value < p2Card.value) {
-            this.giveWinnerCards('playerTwo', [p1Card,p2Card])
-        } else {
-            this.declareWar()
-        }
+        // let p1Card = this.playerOne.cardInPlay
+        // let p2Card = this.playerTwo.cardInPlay
+        // if (p1Card.value > p2Card.value) {
+        //     this.giveWinnerCards('playerOne', [p1Card,p2Card])
+        // } else if (p1Card.value < p2Card.value) {
+        //     this.giveWinnerCards('playerTwo', [p1Card,p2Card])
+        // } else {
+        //     this.declareWar()
+        // }
     }
     giveWinnerCards(winnerName, winnerCards) {
-        this[winnerName].receiveCardsForWinning[winnerCards]
-        if(this.playerOne.deck.length == 0 || this.playerTwo.deck.length == 0) {
-            this.gameEnd()
-        }
+        // this[winnerName].receiveCardsForWinning[winnerCards]
+        // if(this.playerOne.deck.length == 0 || this.playerTwo.deck.length == 0) {
+        //     this.gameEnd()
+        // }
     }
     declareWar() {
         let p1WarCards = this.playerOne.warCards
