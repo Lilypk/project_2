@@ -78,22 +78,24 @@ class Game {
         let deckHalves = d.dealDeck(d.deck)
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
-        this.conductTurn()
+        this.compareCards()
+        this.playCard()
         
     }
     conductTurn() {
         //get playCard from players 
     }
-    compareCards() {
-        // let p1Card = this.playerOne.cardInPlay
-        // let p2Card = this.playerTwo.cardInPlay
-        // if (p1Card.value > p2Card.value) {
-        //     this.giveWinnerCards('playerOne', [p1Card,p2Card])
-        // } else if (p1Card.value < p2Card.value) {
-        //     this.giveWinnerCards('playerTwo', [p1Card,p2Card])
-        // } else {
-        //     this.declareWar()
-        // }
+    compareCards(playerOneDeck,playerTwoDeck) {
+        let p1Card = this.playerOne.cardInPlay
+        console.log(p1Card)
+        let p2Card = this.playerTwo.cardInPlay
+        if (p1Card.value > p2Card.value) {
+            this.giveWinnerCards('playerOne', [p1Card,p2Card])
+        } else if (p1Card.value < p2Card.value) {
+            this.giveWinnerCards('playerTwo', [p1Card,p2Card])
+        } else {
+            this.declareWar()
+        }
     }
     giveWinnerCards(winnerName, winnerCards) {
         // this[winnerName].receiveCardsForWinning[winnerCards]
@@ -102,18 +104,18 @@ class Game {
         // }
     }
     declareWar() {
-        let p1WarCards = this.playerOne.warCards
-        let p2WarCards = this.playerTwo.warCards
-        //each player giveThreeCards
-        //fourth card compareCards
+        // let p1WarCards = this.playerOne.warCards
+        // let p2WarCards = this.playerTwo.warCards
+        // //each player giveThreeCards
+        // //fourth card compareCards
       
-         if (p1WarCards.value > p2WarCards.value) {
-            this.giveWinnerCards('playerOne', [p1WarCards,p2WarCards])
-        } else if (p1WarCards.value < p2WarCards.value) {
-            this.giveWinnerCards('playerTwo', [p1WarCards,p2WarCards])
-        } else {
-            this.declareWar()
-        }
+        //  if (p1WarCards.value > p2WarCards.value) {
+        //     this.giveWinnerCards('playerOne', [p1WarCards,p2WarCards])
+        // } else if (p1WarCards.value < p2WarCards.value) {
+        //     this.giveWinnerCards('playerTwo', [p1WarCards,p2WarCards])
+        // } else {
+        //     this.declareWar()
+        // }
 
     }
     gameEnd(winnerName) {
