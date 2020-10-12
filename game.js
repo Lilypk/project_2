@@ -54,21 +54,23 @@ class Deck {
 }
 class Player {
     constructor(name, playerDeck) {
-        this.name = []
-        this.deck = playerDeck
-    }
-    getRemainingCards() {
-        //how many cards do the players have left
+        this.name = name
+        this.deck = []
+        
     }
     playCard() {
-        let cardInPlay = this.deck.pop()
+        let pot = []
+        let cardInPlay1 = this.deck.shift()
+        let cardInPlay2= this.deck.shift()
+        console.log(cardInPlay1)
+        console.log(cardInPlay2)
         return cardInPlay
     }
     giveThreeCards() {
         // let warCards = this.deck.splice(this.deck.length - 3, 3)
         // return warCards
     }
-    receiveCardsForWinning(winningCards) {
+    receiveWinningCards(winningCards) {
         // this.deck.unshift(...winningCards)
     }
 }
@@ -79,23 +81,26 @@ class Game {
         this.playerOne = new Player(playerOneName, deckHalves[0])
         this.playerTwo = new Player(playerTwoName, deckHalves[1])
         this.compareCards()
-        this.playCard()
+        // this.playCard()
         
     }
+    
     conductTurn() {
-        //get playCard from players 
+        // get playCard from players 
+
     }
-    compareCards(playerOneDeck,playerTwoDeck) {
-        let p1Card = this.playerOne.cardInPlay
-        console.log(p1Card)
-        let p2Card = this.playerTwo.cardInPlay
-        if (p1Card.value > p2Card.value) {
-            this.giveWinnerCards('playerOne', [p1Card,p2Card])
-        } else if (p1Card.value < p2Card.value) {
-            this.giveWinnerCards('playerTwo', [p1Card,p2Card])
-        } else {
-            this.declareWar()
-        }
+    compareCards() {
+      
+        // let p1Card = this.playerOne.cardInPlay
+        // console.log(p1Card)
+        // let p2Card = this.playerTwo.cardInPlay
+        // if (p1Card.value > p2Card.value) {
+        //     this.giveWinnerCards('playerOne', [p1Card,p2Card])
+        // } else if (p1Card.value < p2Card.value) {
+        //     this.giveWinnerCards('playerTwo', [p1Card,p2Card])
+        // } else {
+        //     this.declareWar()
+        // }
     }
     giveWinnerCards(winnerName, winnerCards) {
         // this[winnerName].receiveCardsForWinning[winnerCards]
@@ -123,6 +128,11 @@ class Game {
     }
     
 }
+
+
+
+
+
 let cardReady = new Card
 console.log(cardReady)
 let deckReady = new Deck
@@ -130,5 +140,6 @@ console.log(deckReady)
 let gameReady = new Game('playerOne', 'playerTwo')
 console.log(gameReady)
 let playerReady = new Player
+
 
 
