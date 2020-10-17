@@ -21,11 +21,11 @@ class Deck {
 
                 let newCard = new Card(suits[i], cardValues[j], score[j])
 
-                console.log(newCard)
+                // console.log(newCard)
                 this.mainDeck.push(newCard)
             }
         }
-        console.log(this.mainDeck)
+        // console.log(this.mainDeck)
 
     }
     
@@ -34,8 +34,16 @@ class War {
     constructor() {
         this.currentRound = 1
         this.currentCards = []
-        this.playerOneDeck = []
-        this.playerTwoDeck = []
+        this.playerOne = {
+            playerDeck: [],
+            cardsInPlay: []
+        }
+        this.playerTwo = {
+            playerDeck: [],
+            cardsInPlay: []
+        }
+        // this.playerOneDeck = []
+        // this.playerTwoDeck = []
     }
     shuffleDeck(deck) {
         //  console.log(deck)
@@ -48,11 +56,50 @@ class War {
         // this.dealDeck(deck)
         // console.log(deck)
         let half = deck.length / 2
-        this.playerOneDeck = deck.splice(0, half)
-        this.playerTwoDeck = deck.splice(-half)
+        
+        this.playerOne.playerDeck = deck.splice(0, half)
+        this.playerTwo.playerDeck = deck.splice(-half)
+        console.log(this.playerOne.playerDeck)
+        console.log(this.playerTwo.playerDeck)
        
      }
-    
+    compareCards() {
+        if (this.playerOne.playerDeck.length < 1 || this.playerTwo.playerDeck.length < 1) {
+            
+            this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.shift())
+            this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.shift())
+            
+            if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
+                this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
+                this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+            } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
+                this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+                this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
+            } else {
+                if (this.playerOne.playerDeck.length < 4 || this.playerTwo.playerDeck.length < 4) {
+                    //end
+                }
+                else {
+                    this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.splice(0, 4))
+                    this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.splice(0, 4))
+                    if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
+                        this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
+                        this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+                    } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
+                        this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+                        this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
+                    } else {
+                        this.compareCards()
+                    }
+                
+                }
+            } 
+
+        }
+        else {
+            console.log('end game')
+        }
+}
 }
 
 let newDeck = new Deck()
