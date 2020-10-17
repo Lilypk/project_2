@@ -66,39 +66,50 @@ class War {
     compareCards() {
         if (this.playerOne.playerDeck.length < 1 || this.playerTwo.playerDeck.length < 1) {
             
+           console.log('end game')
+
+        }
+        else {
             this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.shift())
             this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.shift())
             
             if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
                 this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
                 this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+                console.log(this.playerOne.playerDeck, this.playerTwo.playerDeck)
+                
             } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
                 this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
                 this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
+                console.log(this.playerOne.playerDeck, this.playerTwo.playerDeck)
+              
             } else {
-                if (this.playerOne.playerDeck.length < 4 || this.playerTwo.playerDeck.length < 4) {
-                    //end
-                }
-                else {
-                    this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.splice(0, 4))
-                    this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.splice(0, 4))
-                    if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
-                        this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
-                        this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
-                    } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
-                        this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
-                        this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
-                    } else {
-                        this.compareCards()
-                    }
                 
-                }
+                this.war()
+                
             } 
+        }
+} 
+war() {
+    if (this.playerOne.playerDeck.length < 4 || this.playerTwo.playerDeck.length < 4) {
+        //end
+    }
 
+    else {
+        this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.splice(0, 4))
+        this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.splice(0, 4))
+        if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
+            this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
+            this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+        } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
+            this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+            this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
+        } else {
+            this.war()
         }
-        else {
-            console.log('end game')
-        }
+    
+ 
+}
 }
 }
 
