@@ -32,7 +32,7 @@ class Deck {
 }
 class War {
     constructor() {
-        this.currentRound = 1
+        this.currentRound = 0
         this.currentCards = []
         this.playerOne = {
             playerDeck: [],
@@ -42,19 +42,17 @@ class War {
             playerDeck: [],
             cardsInPlay: []
         }
-        // this.playerOneDeck = []
-        // this.playerTwoDeck = []
+       
     }
     shuffleDeck(deck) {
-        //  console.log(deck)
+         console.log(deck)
         for (let i = 0; i < deck.length; i++) {
             const card = deck[i]
             const random = Math.floor(Math.random() * i)
             deck[i] = deck[random]
             deck[random] = card
         }
-        // this.dealDeck(deck)
-        // console.log(deck)
+        
         let half = deck.length / 2
         
         this.playerOne.playerDeck = deck.splice(0, half)
@@ -89,6 +87,7 @@ class War {
                 
             } 
         }
+        console.log(this.currentRound++)
 } 
 war() {
     if (this.playerOne.playerDeck.length < 4 || this.playerTwo.playerDeck.length < 4) {
