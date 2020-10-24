@@ -57,8 +57,8 @@ class War {
         
         this.playerOne.playerDeck = deck.splice(0, half)
         this.playerTwo.playerDeck = deck.splice(-half)
-        console.log(this.playerOne.playerDeck)
-        console.log(this.playerTwo.playerDeck)
+        // console.log(this.playerOne.playerDeck)
+        // console.log(this.playerTwo.playerDeck)
        
      }
     compareCards() {
@@ -75,7 +75,6 @@ class War {
                 this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
                 this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
                 console.log(this.playerOne.playerDeck, this.playerTwo.playerDeck)
-                
             } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
                 this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
                 this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
@@ -87,6 +86,7 @@ class War {
                 
             } 
         }
+        
         console.log(this.currentRound++)
 } 
 war() {
