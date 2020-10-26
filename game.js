@@ -57,8 +57,7 @@ class War {
         
         this.playerOne.playerDeck = deck.splice(0, half)
         this.playerTwo.playerDeck = deck.splice(-half)
-        // console.log(this.playerOne.playerDeck)
-        // console.log(this.playerTwo.playerDeck)
+      
        
      }
     compareCards() {
@@ -72,10 +71,12 @@ class War {
             this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.shift())
             
             if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
+                console.log('Player one wins this round', `p1: ${this.playerOne.cardsInPlay[0].score}`, `p2: ${this.playerTwo.cardsInPlay[0].score}`)
                 this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
                 this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
                 console.log(this.playerOne.playerDeck, this.playerTwo.playerDeck)
             } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
+                console.log('Player two wins this round', `p1: ${this.playerOne.cardsInPlay[0].score}`, `p2: ${this.playerTwo.cardsInPlay[0].score}`)
                 this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
                 this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
                 console.log(this.playerOne.playerDeck, this.playerTwo.playerDeck)
@@ -95,12 +96,16 @@ war() {
     }
 
     else {
+        console.log('War is happening')
         this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.splice(0, 4))
         this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.splice(0, 4))
         if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
+            console.log('Player one wins this round of war', `p1: ${this.playerOne.cardsInPlay[0].score}`, `p2: ${this.playerTwo.cardsInPlay[0].score}`)
             this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
             this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+
         } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
+            console.log('Player two wins this round of war', `p1: ${this.playerOne.cardsInPlay[0].score}`, `p2: ${this.playerTwo.cardsInPlay[0].score}`)
             this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
             this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
         } else {
