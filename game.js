@@ -92,22 +92,31 @@ class War {
 } 
 war() {
     if (this.playerOne.playerDeck.length < 4 || this.playerTwo.playerDeck.length < 4) {
-        //end
+        if(this.playerOne.playerDeck.length > this.playerTwo.playerDeck.length) {
+            console.log('Player one wins')
+
+        }else{
+            console.log('Player two wins')
+        }
     }
 
     else {
         console.log('War is happening')
-        this.playerOne.cardsInPlay.unshift(this.playerOne.playerDeck.splice(0, 4))
-        this.playerTwo.cardsInPlay.unshift(this.playerTwo.playerDeck.splice(0, 4))
+        this.playerOne.cardsInPlay.unshift(...this.playerOne.playerDeck.splice(0, 4))
+        this.playerTwo.cardsInPlay.unshift(...this.playerTwo.playerDeck.splice(0, 4))
         if (this.playerOne.cardsInPlay[0].score > this.playerTwo.cardsInPlay[0].score) {
             console.log('Player one wins this round of war', `p1Card: ${this.playerOne.cardsInPlay[0].score}`, `p2Card: ${this.playerTwo.cardsInPlay[0].score}`)
-            this.playerOne.playerDeck.push(this.playerOne.cardsInPlay.shift())
-            this.playerOne.playerDeck.push(this.playerTwo.cardsInPlay.shift())
+            this.playerOne.playerDeck.push(...this.playerOne.cardsInPlay)
+            this.playerOne.playerDeck.push(...this.playerTwo.cardsInPlay)
+            this.playerOne.cardsInPlay = []
+            this.playerTwo.cardsInPlay = []
 
         } else if (this.playerOne.cardsInPlay[0].score < this.playerTwo.cardsInPlay[0].score) {
             console.log('Player two wins this round of war', `p1Card: ${this.playerOne.cardsInPlay[0].score}`, `p2Card: ${this.playerTwo.cardsInPlay[0].score}`)
-            this.playerTwo.playerDeck.push(this.playerTwo.cardsInPlay.shift())
-            this.playerTwo.playerDeck.push(this.playerOne.cardsInPlay.shift())
+            this.playerTwo.playerDeck.push(...this.playerTwo.cardsInPlay)
+            this.playerTwo.playerDeck.push(...this.playerOne.cardsInPlay)
+            this.playerOne.cardsInPlay = []
+            this.playerTwo.cardsInPlay = []
         } else {
             this.war()
         }
